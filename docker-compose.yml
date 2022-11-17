@@ -1,0 +1,50 @@
+version: '1.0.1'
+
+networks:
+  app-network:
+    driver: bridge
+
+services:
+  redis_idfa:
+    image: 'redis:latest'
+    ports:
+      - '${REDIS_idfa}:6379'
+    environment:
+      - REDIS_HOSTNAME='${REDIS_HOST}'
+      - REDIS_PASSWORD='${REDIS_PWD}'
+      - REDIS_USERNAME='${REDIS_LOGIN}'
+    networks:
+      - app-network
+
+  redis_gaid:
+    image: 'redis:latest'
+    ports:
+      - '${REDIS_gaid}:6379'
+    environment:
+      - REDIS_HOSTNAME='${REDIS_HOST}'
+      - REDIS_PASSWORD='${REDIS_PWD}'
+      - REDIS_USERNAME='${REDIS_LOGIN}'
+    networks:
+      - app-network
+
+  redis_adid:
+    image: 'redis:latest'
+    ports:
+      - '${REDIS_adid}:6379'
+    environment:
+      - REDIS_HOSTNAME='${REDIS_HOST}'
+      - REDIS_PASSWORD='${REDIS_PWD}'
+      - REDIS_USERNAME='${REDIS_LOGIN}'
+    networks:
+      - app-network
+
+  redis_dvid:
+    image: 'redis:latest'
+    ports:
+      - '${REDIS_dvid}:6379'
+    environment:
+      - REDIS_HOSTNAME='${REDIS_HOST}'
+      - REDIS_PASSWORD='${REDIS_PWD}'
+      - REDIS_USERNAME='${REDIS_LOGIN}'
+    networks:
+      - app-network
